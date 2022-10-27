@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Binary_Clock
@@ -12,22 +14,38 @@ namespace Binary_Clock
     {
         static void Main(string[] args)
         {           
-            ConsoleKeyInfo esc;
-            do
-            {
-                Clock();
-                esc = Console.ReadKey();
-                Console.Clear();
-            } while (esc.Key != ConsoleKey.Escape);
-            
+                STPUPDT();
+                FINISH();
         }
+
+        private static void FINISH()
+        {
+            return;
+        }
+
         static void Clock()
         {
-            Console.WriteLine("Binary Coded Decimal Clock : ");
+            Console.Clear();
+            Console.WriteLine("Binary Coded Decimal Clock : ");           
             PrintClock();
-            Console.WriteLine();
-            Console.WriteLine();
-            Console.WriteLine("Apasa orice buton pentru a reactializa ceasul sau apasa butonul ESCAPE pentru a iesi");
+        }
+        static void STPUPDT()
+        {
+            Stopwatch update;
+            update = Stopwatch.StartNew();
+            do
+            {
+                for (long i = update.ElapsedMilliseconds; i < update.ElapsedMilliseconds + 1; i++)
+                {                   
+                    if (i % 1000 == 0)
+                    {
+                        Clock();                        
+                    }
+                    
+                }
+            }
+            while (true);
+
         }
         static DateTime Time_Update()
         {
@@ -87,13 +105,10 @@ namespace Binary_Clock
         {
             DateTime azi = Time_Update();
             int hour = azi.Hour;
-            int h1 = hour / 10;
             int h2 = hour % 10;
             int minute = azi.Minute;
-            int min1 = minute / 10;
             int min2 = minute % 10;
             int second = azi.Second;
-            int sec1 = second / 10;
             int sec2 = second % 10;
             string H2S = "O";
             string M2S = "O";
@@ -116,7 +131,6 @@ namespace Binary_Clock
         {
             DateTime azi = Time_Update();
             int hour = azi.Hour;
-            int h1 = hour / 10;
             int h2 = hour % 10;
             int minute = azi.Minute;
             int min1 = minute / 10;
