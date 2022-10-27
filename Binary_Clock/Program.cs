@@ -10,17 +10,14 @@ using System.Threading.Tasks;
 
 namespace Binary_Clock
 {
+    
     internal class Program
     {
         static void Main(string[] args)
         {           
-                STPUPDT();
-                FINISH();
-        }
-
-        private static void FINISH()
-        {
-            return;
+                STOPWATCH_CLOCK();
+            Console.WriteLine("\nCeasul s-a oprit. Apasati orice buton pentru a iesi.");
+            Console.ReadKey();
         }
 
         static void Clock()
@@ -29,7 +26,7 @@ namespace Binary_Clock
             Console.WriteLine("Binary Coded Decimal Clock : ");           
             PrintClock();
         }
-        static void STPUPDT()
+        static void STOPWATCH_CLOCK()
         {
             Stopwatch update;
             update = Stopwatch.StartNew();
@@ -39,13 +36,11 @@ namespace Binary_Clock
                 {                   
                     if (i % 1000 == 0)
                     {
-                        Clock();                        
+                        Clock();
                     }
-                    
                 }
             }
-            while (true);
-
+            while (true); // while (update.ElapsedMilliseconds < XX000) , Linia se inlocuieste cu asta daca se doreste sa functioneze "XX" secunde, in loc sa se reactualizeze de infinit ori pana cand se inchide aplicatia manual.
         }
         static DateTime Time_Update()
         {
