@@ -15,7 +15,7 @@ namespace Binary_Clock
     {
         static void Main(string[] args)
         {           
-                STOPWATCH_CLOCK();
+            STOPWATCH_CLOCK();
             Console.WriteLine("\nCeasul s-a oprit. Apasati orice buton pentru a iesi.");
             Console.ReadKey();
         }
@@ -46,7 +46,7 @@ namespace Binary_Clock
         {
             return DateTime.Now;
         }
-        static void PrintClock() // metoda romaneasca, we like typing
+        static void PrintClock()                           // metoda romaneasca, we like typing
         {
             PrintRowSimple();
             PrintRowHeader();
@@ -66,35 +66,15 @@ namespace Binary_Clock
         }
         static void PrintRowSimple()
         {
-            Console.Write("\n|");
-            for (int i = 0; i < 35; i++)
-            {
-                Console.Write("-");
-            }
-            Console.Write("|");
+            Console.Write("\n|-----------------------------------|");
         }
         static void PrintRowEmpty()
         {
-            Console.Write("\n|");
-            for (int i = 0; i < 35; i++)
-            {
-                if (i == 11 || i == 23 ) Console.Write("|"); 
-                else Console.Write(" ");
-            }
-            Console.Write("|");
+            Console.Write("\n|           |           |           |");
         }
         static void PrintRowHeader()
         {
-            Console.Write("\n|");
-            for (int i = 1; i <= 35; i++)
-            {
-                if (i % 4 != 0) Console.Write(" ");
-                if (i == 4 || i == 8) Console.Write("H");
-                if (i == 16 || i == 20) Console.Write("M");
-                if (i == 28 || i == 32) Console.Write("S");
-                if (i % 4 == 0 && i % 3 == 0) Console.Write("|");                
-            }
-            Console.Write("|");
+            Console.Write("\n|   H   H   |   M   M   |   S   S   |");
         }
         static void PrintRow1() // pentru ca valorile binare se duc pe coloane iar tabelul este tiparit pe randuri am facut manual conversia pe randuri ( a durat un pic )
         {
@@ -111,16 +91,7 @@ namespace Binary_Clock
             if (h2 > 7) H2S = "X";
             if (min2 > 7) M2S = "X";
             if (sec2 > 7) S2S = "X";
-            Console.Write("\n|");
-            for (int i = 1; i <= 35; i++)
-            {               
-                if (i == 8) Console.Write(H2S);
-                else if (i == 20) Console.Write(M2S);
-                else if (i == 32) Console.Write(S2S);
-                else if (i % 4 == 0 && i % 3 == 0) Console.Write("|");
-                else Console.Write(" ");
-            }
-            Console.Write("|");
+            Console.Write($"\n|       {H2S}   |       {M2S}   |       {S2S}   |");
         } 
         static void PrintRow2()
         {
@@ -143,18 +114,7 @@ namespace Binary_Clock
             if (min1 > 3) M1S = "X";
             if (sec2 > 3 && sec2 < 8) S2S = "X";
             if (sec1 > 3) S1S = "X";
-            Console.Write("\n|");
-            for (int i = 1; i <= 35; i++)
-            {
-                if (i == 8) Console.Write(H2S);
-                else if (i == 16) Console.Write(M1S);
-                else if (i == 20) Console.Write(M2S);
-                else if (i == 28) Console.Write(S1S);
-                else if (i == 32) Console.Write(S2S);
-                else if (i % 4 == 0 && i % 3 == 0) Console.Write("|");
-                else Console.Write(" ");
-            }
-            Console.Write("|");
+            Console.Write($"\n|       {H2S}   |   {M1S}   {M2S}   |   {S1S}   {S2S}   |");
         }
         static void PrintRow3()
         {
@@ -180,19 +140,7 @@ namespace Binary_Clock
             if (min1 == 2 || min1 == 3 || min1 == 6 || min1 == 7) M1S = "X";
             if (sec2 == 2 || sec2 == 3 || sec2 == 6 || sec2 == 7) S2S = "X";
             if (sec1 == 2 || sec1 == 3 || sec1 == 6 || sec1 == 7) S1S = "X";
-            Console.Write("\n|");
-            for (int i = 1; i <= 35; i++)
-            {
-                if (i == 4) Console.Write(H1S);
-                else if (i == 8) Console.Write(H2S);
-                else if (i == 16) Console.Write(M1S);
-                else if (i == 20) Console.Write(M2S);
-                else if (i == 28) Console.Write(S1S);
-                else if (i == 32) Console.Write(S2S);
-                else if (i % 4 == 0 && i % 3 == 0) Console.Write("|");
-                else Console.Write(" ");
-            }
-            Console.Write("|");
+            Console.Write($"\n|   {H1S}   {H2S}   |   {M1S}   {M2S}   |   {S1S}   {S2S}   |");
         }
         static void PrintRow4()
         {
@@ -218,19 +166,7 @@ namespace Binary_Clock
             if (min1 % 2 != 0) M1S = "X";
             if (sec2 % 2 != 0) S2S = "X";
             if (sec1 % 2 != 0) S1S = "X";
-            Console.Write("\n|");
-            for (int i = 1; i <= 35; i++)
-            {
-                if (i == 4) Console.Write(H1S);
-                else if (i == 8) Console.Write(H2S);
-                else if (i == 16) Console.Write(M1S);
-                else if (i == 20) Console.Write(M2S);
-                else if (i == 28) Console.Write(S1S);
-                else if (i == 32) Console.Write(S2S);
-                else if (i % 4 == 0 && i % 3 == 0) Console.Write("|");
-                else Console.Write(" ");
-            }
-            Console.Write("|");
+            Console.Write($"\n|   {H1S}   {H2S}   |   {M1S}   {M2S}   |   {S1S}   {S2S}   |");
         }
         static void PrintRowConvert()
         {
